@@ -1,0 +1,77 @@
+<%- include('partial/head') %> 
+    <title>Rock, Paper, Scissors | Challenge Ch. 5 | Rizky</title>
+  </head>
+  <body class="">
+    
+    <div class="container-fluid game-title">
+      <div class="row">
+        <div class="col-6 header">
+          <div class="arrow">
+            <a href="/main">  
+              <i class="fas fa-chevron-left"></i>
+            </a>
+          </div>
+          <div class="icon">
+            <img src="/assets/logo-game-suit.png" class=" alt="" />
+          </div>
+          <div class="title">ROCK PAPER SCISSORS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid game-play">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2 col-4 tokens">
+          <div class="player text-dark">PLAYER 1</div>
+          <button class="human token rock">
+            <img src="/assets/batu.png" alt="" class="humans" />
+          </button>
+          <button class="human token paper">
+            <img src="/assets/kertas.png" alt="" class="humans" />
+          </button>
+          <button class="human token scissor">
+            <img src="/assets/gunting.png" alt="" class="humans" />
+          </button>
+        </div>
+        <div class="col-md-2 col-4 mecha">
+          <div class="row play">
+            <div class="start">VS</div>
+            <div class="game result hidden"></div>
+          </div>
+          <div class="row again">
+            <div class="refresh">
+              <img src="/assets/refresh.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-4 tokens">
+          <div class="com text-dark">COM</div>
+          <div class="com token rock">
+            <img src="/assets/batu.png" alt="" />
+          </div>
+          <div class="com token paper">
+            <img src="/assets/kertas.png" alt="" />
+          </div>
+          <div class="com token scissor">
+            <img src="/assets/gunting.png" alt="" />
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+
+    <script src="/js/app.js" defer></script>
+  </body>
+</html>

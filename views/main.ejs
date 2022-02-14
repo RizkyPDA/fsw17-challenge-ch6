@@ -1,0 +1,318 @@
+<%- include('partial/head') %> 
+  <body>
+
+  <div class="wrapper">
+    
+    <!-- SECTION 1 : NAVBAR & MAIN TITLE -->
+    <section id="page1">
+
+      <!-- Navbar-->
+      <%- include('partial/navbar') %> 
+      <!-- main-title -->
+      <div id="banner">
+        <div id="banner-content">
+          <h1 class="display-2">Play traditional game</h1>
+          <h3 class="lead">Experience new traditional game play</h3>
+          <div>
+          <a class="btn btn-lg btn-warning button-action p-3 d-inline-block" href="/game">Play Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- page1-footer -->
+      <div id="page1-footer" class="mx-auto text-center">
+        <p>The story</p>
+        <a href="#page2">
+        <img src="/assets/scroll-down.svg" type="button" alt=""></a>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : CAROUSEL -->
+    <section id="page2">
+      <div class="container">
+        <div class="row">
+          <h3 class="lead text-light justify-content-center">What's so special?</h3>
+          <div class="col-lg-4">
+              <h1 class="display-2 text-light text-uppercase font-weight-bolder">The Games</h1>
+          </div>
+          <div class="col-lg-8">
+            <div class="carousel slide" id="page2-slider" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li  data-bs-target="#page2-slider" data-bs-slide-to="0" class="active" ></li>
+                <li  data-bs-target="#page2-slider" data-bs-slide-to="1" ></li>
+                <li  data-bs-target="#page2-slider" data-bs-slide-to="2" ></li>
+                <li  data-bs-target="#page2-slider" data-bs-slide-to="3" ></li>
+                <li  data-bs-target="#page2-slider" data-bs-slide-to="4" ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/assets/rockpaperstrategy-1600.jpg" class="d-block w-100 img-fluid" alt="first slide">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/rockpaperstrategy-1600.jpg" class="d-block w-100 img-fluid" alt="second slide">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/rockpaperstrategy-1600.jpg" class="d-block w-100 img-fluid" alt="third slide">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/rockpaperstrategy-1600.jpg" class="d-block w-100 img-fluid" alt="fourth slide">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/rockpaperstrategy-1600.jpg" class="d-block w-100" alt="fifth slide">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#page2-slider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#page2-slider" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      <div>
+    </section>
+
+    <!-- SECTION 3 : FEATURES & TIMELINE -->
+    <section id="page3">
+      <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-lg-6 pt-5">
+                  <div>
+                <h3 class="lead font-weight-light text-light mb-0 p-sm-4">What's so special?</h3>
+                </div>
+                <div class="col-lg-4 pb-0">
+                <h1 class="display-2 text-light text-uppercase p-4 pt-md-0">Features</h1>
+                </div>
+                </div>
+            </div>
+        <div class="page-content page-container bg-transparent" id="page-content">
+      <div class="padding">
+        <div class="row justify-content-end">
+          <div class="col-lg-6">
+            <div class="timeline p-4 block mb-4">
+              <div class="tl-item active">
+                <div class="tl-dot b-white"></div>
+                <div class="tl-content">
+                  <div class="text-warning text-uppercase">Traditional games</div>
+                  <div class="text-white">If you miss your childhood, we provide many traditional games here.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot b-white mt-0"></div>
+                <div class="tl-content">
+                  <div class="text-warning text-uppercase">Game Suit</div>
+                  </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot b-white"></div>
+                <div class="tl-content">
+                  <div class="text-warning text-uppercase">TBD</div>
+                </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 : TABLE SPECS -->
+    <section id="page4">
+      <div class="container">
+        <div class="row">
+          <h3 class="text-light lead col-12 text-center ">Can My Computer Run This Game?</h3>
+          <div class="system-req">
+            <h1 class=" text-light text-uppercase text-left display-2">System</h1>
+            <h1 class=" text-light text-uppercase text-left display-2">Requirements</h1>
+          </div>
+          <!-- table -->
+          <div class="col-lg-6">
+            <table class="table table-bordered">
+              <thead class="border-dark">
+                <tr>
+                  <td scope="col">
+                    <p class="text-warning lead">OS:</p>
+                    <p class=" text-light font-sys">Windows 7 64-bit only (No OSX support at this time)</p> 
+                  </td>
+                  <td scope="col">
+                    <p class="text-warning lead">PROCESSOR:</p> 
+                    <p class="text-light font-sys">Intel Core 2 Duo @2.4 GHz or AMD Athlon X2 @2.8 GHz</p> 
+                  </td>
+                </tr>
+              </thead>
+              <tbody class="border-dark">
+                <tr>
+                  <td>
+                    <p class="text-warning lead">MEMORY:</p>
+                    <p class="text-light font-sys">4GB RAM</p> 
+                  </td>
+                  <td>
+                    <p class="text-warning lead">STORAGE:</p>
+                    <p class="text-light font-sys">8GB Available Space</p> 
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <p class="text-warning lead">GRAPHICS:</p>
+                    <p class="text-light font-sys">Nvidia GeForce GTX 660 2GB or AMD Radeon 7850 2GB DirectX11 (Shader Model 5)</p> 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 5 : QUOTE CARDS -->
+    <section id="page5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div class="top-scores">
+              <h1 class="text-light text-uppercase text-left display-2">Top Scores</h1>
+              <h6 class="lead font-weight-light mb-lg-0 mb-md-2 text-light text-left mt-3">This top score from various games provided<br> on this platform.</h6>
+              <button type="button" class="btn btn-lg btn-warning button-action mt-5">See More</button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row reviewer-card p-3 col-md-10 offset-md-2">
+              <div class="col-lg-3 col-md-2 col-sm-3">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="top-scorer1" class="reviewer-image rounded-circle" />
+              </div>
+              <div class="col-lg-8 col-md-9 col-sm-8 text-light">
+                <p class="mb-0 p-0 text-warning lead">Evan Lahti</p>
+                <p class="mb-0 p-0 text-secondary">PC Gamer</p>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <i class="fab fa-twitter text-muted"></i>
+              </div>
+              <p class="text-light mt-3 scorer-quote">"One of my gaming highlights of the year."</p>
+              <p class="text-muted small">June 18, 2021</p>
+            </div>
+            <div class="row reviewer-card p-3 mt-3 col-md-10 offset-md-1">
+              <div class="col-lg-3 col-md-2 col-sm-3">
+                <img src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80" alt="top-scorer2" class="reviewer-image rounded-circle" />
+              </div>
+              <div class="col-lg-8 col-md-9 col-sm-8 text-light">
+                <p class="mb-0 p-0 text-warning lead">Jada Griffin</p>
+                <p class="mb-0 p-0 text-secondary">Nerdreactor</p>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <i class="fab fa-twitter text-muted"></i>
+              </div>
+              <p class="text-light mt-3 scorer-quote">"The next big thing in the world of streaming and survival games."</p>
+              <p class="text-secondary small">July 10, 2021</p>
+            </div>
+            <div class="row reviewer-card p-3 mt-3 col-md-10 offset-md-2">
+              <div class="col-lg-3 col-md-2 col-sm-3">
+                <img src="https://images.unsplash.com/photo-1504810370725-2585de12e6ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="top-scorer3" class="reviewer-image rounded-circle" />
+              </div>
+              <div class="col-lg-8 col-md-9 col-sm-8 text-light">
+                <p class="mb-0 p-0 text-warning lead">Aaron Williams</p>
+                <p class="mb-0 p-0 text-secondary">Uproxx</p>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <i class="fab fa-twitter text-muted"></i>
+              </div>
+              <p class="text-light mt-3 scorer-quote">"Snoop Dogg playing The Wildly Entertaining <br> 'SOS' is Ridiculous."</p>
+              <p class="text-muted small">December 24, 2018</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 6 : NEWSLETTER & FOOTER -->
+    <section id="page6" class="bg-black">
+      <div class="container">
+        <div class="row p-5 mr-0 ml-0">
+          <div class="col-lg-6">
+            <div class="skull-wrap">  
+              <img 
+                  src="/assets/bg-06.png"
+                  alt="skull"
+                  class="img-fluid align-self-center "
+                />
+            </div>
+          </div>
+          <div class="col-lg-6 align-self-center">
+            <h6 class="text-light lead mb-md-3">Want to stay in <br> touch?</h6>
+            <h1 class="h1 text-light text-uppercase font-weight-normal display-4">Newsletter</h1>
+            <h1 class="h1 text-light text-uppercase font-weight-normal display-4">Subscribe</h1>
+            <p class="text-light text-sm-start pt-3 pb-3 spam">
+              In order to start receiving our news, all you have to do is enter your email address. Everything else will be taken care of by us. We will send you emails containing information about game. We don't spam.
+            </p>
+            <div class="row g-3">
+              <div class="col">
+                <div id="input-email" class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label text-secondary">Your email Address</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="youremail@binar.co.id">
+                </div>
+              </div>
+              <div class="col">
+                <div id="input-email-submit" class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">&nbsp;</label>
+                  <button type="submit" class="btn btn-warning px-sm-5 d-inline-block mb-2 border-0">Subscribe Now</button>
+              </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <section id="footer">
+      <div class="container-footer">
+        <div class="card-footer">
+          <div class="footer-menu pb-4">
+          <a href="#page1" class="text-light text-uppercase footer-text text-decoration-none font-weight-bolder">Main</a>
+          <a href="#page2" class="text-light text-uppercase footer-text text-decoration-none font-weight-bolder">About</a>
+          <a href="#page3" class="text-light text-uppercase footer-text text-decoration-none font-weight-bolder">Game Features</a>
+          <a href="#page4" class="text-light text-uppercase footer-text text-decoration-none font-weight-bolder">System Requirements</a>
+          <a href="#page5" class="text-light text-uppercase footer-text text-decoration-none font-weight-bolder">Quotes</a>  
+          </div>
+          <div class="footer-icon">
+          <a href="#"><i class="fab fa-facebook-f text-light"></i></a>
+          <a href="#"><i class="fab fa-twitter text-light"></i></a>
+          <a href="#"><i class="fab fa-youtube text-danger"></i></a>
+          <a href="#"><i class="fab fa-twitch text-light"></i></a>
+          </div>
+        </div>  
+        <!-- footer divider -->
+        <div class="divider mb-4">
+          <div class="row" style="font-size: 10px">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="pull-left">
+              <p class="text-secondary policy">&copy; 2018 Your Games, Inc. All Rights Reserved</p>
+            </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 text-light policy">
+            <div class="mr-4 d-flex justify-content-end">
+            <div>Privacy Policy &nbsp;</div>
+            <div>| Terms of Services &nbsp;</div>
+            <div>| Code of Conduct</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  </html> 
