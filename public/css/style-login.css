@@ -384,3 +384,122 @@ h1 > a {
   font-size: 14px;
   text-align: center;
 }
+.register-container {
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  background-position: center;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.register-container .row {
+  align-self: center;
+}
+.register-container h1,
+.dashboard-container h1 {
+  color: #283605;
+  text-align: center;
+}
+
+.players-form input.form-control {
+    border: 0;
+    border-bottom: 1px solid #e7e7e7;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 10px;
+    margin-bottom: 7px;
+}
+}
+
+.players-form .form-control:focus {
+  border-color: #283605 !important;
+  box-shadow: 0.3rem 0.3rem 0 0.1rem rgb(99, 38, 82, 1%) !important;
+  color: #283605;
+  font-weight: lighter;
+}
+
+.form-floating label {
+  color: #632652;
+  font-weight: bold;
+}
+
+.btn-confirm {
+  position: relative;
+  border: 2px solid #632652;
+  background-color: #ffab76;
+  border-radius: 3px;
+  padding: 1rem 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 0 0 0.1rem rgb(99, 38, 82, 25%) !important;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-confirm::after {
+  content: "";
+  position: absolute;
+}
+
+.btn-confirm:hover {
+  box-shadow: 0.3rem 0.3rem 0 0.1rem rgb(99, 38, 82, 25%) !important;
+  transform: translateX(-0.55rem);
+}
+
+.btn-back {
+  position: relative;
+  display: inline-block;
+  border: 2px solid #632652;
+  background-color: #ffeead;
+  border-radius: 3px;
+  padding: 1rem 2.2rem;
+  min-width: 50%;
+  width: 100%;
+  font-weight: bold;
+  color: #632652;
+  box-shadow: 0 0 0 0.1rem rgb(99, 38, 82, 25%) !important;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-back::after {
+  content: "";
+  position: absolute;
+}
+
+.btn-back:hover {
+  box-shadow: -0.3rem 0.3rem 0 0.1rem rgb(99, 38, 82, 25%) !important;
+  transform: translateX(0.55rem);
+}
+
+.sign-up {
+  color: #632652;
+}
+
+.sign-up a {
+  color: #548cff;
+}
+
+.sign-up a:hover {
+  color: #7900ff;
+}
+
+/* Start Profile Page */
+.dashboard_delete-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard_delete-btn button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: #632652;
+  font-weight: bold;
+}
+
+.dashboard_delete-btn button:hover {
+  color: #7900ff;
+}

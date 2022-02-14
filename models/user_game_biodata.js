@@ -11,10 +11,9 @@ User_game_biodata.init(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    username: DataTypes.STRING,
-    fullname: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    address: DataTypes.STRING,
+    age: DataTypes.INTEGER(3),
+    address: DataTypes.STRING(255),
+    city: DataTypes.STRING(255),
     user_uuid: {
       type: DataTypes.UUID,
       allowNull: false,

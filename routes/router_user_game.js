@@ -1,13 +1,14 @@
 const express = require("express");
-const { User_game_biodata, User_game } = require("../models");
 const router = express.Router();
+const { User_game_biodata, User_game } = require("../models");
 const { Users } = require("../models/user_game");
 
 // untuk mendapatkan seluruh data user
 router.get("/api/user_game", async (req, res, next) => {
   try {
-    const userList = await User_game.findAll({
+    const userList = await User_game.findOne({
       // include berfungsi untuk join table sesuai dengan alias (AS) yang sudah didefinisikan di relasi yang ada di file index
+      where: { uuid: req.params.id },
       include: ["user_game_biodata", "user_game_history"],
     });
     res.status(200).json({

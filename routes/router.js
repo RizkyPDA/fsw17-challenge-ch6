@@ -7,77 +7,39 @@ const jwt = require("jsonwebtoken");
 const { Users } = require("../models/user_game");
 const controllerUser = require("../controllers/Users");
 
-router.get("/", isLoggedIn, controllerUser.getUsers);
+// router.get("/", isLoggedIn, controllerUser.getUsers);
 
-router.get("/main", isLoggedIn, (req, res) => {
-  res.render("main.ejs", { headTitle: "Home" });
-});
-
-router.get("/game", isLoggedIn, (req, res) => {
-  res.render("game.ejs", { headTitle: "Game" });
-});
-
-router.get("/login", (req, res) => {
-  res.render("login.ejs", { headTitle: "Login" });
-});
-
-// router.get("/login", (req, res) => {
-//   const { status } = req.query;
-//   res.render("login", {
-//     status,
-//   });
-// });
-
-router.get("/register", (req, res) => {
-  res.render("register", { headTitle: "Register Here!" });
-});
-
-router.post("/register", (req, res) => {
-  const { nama, email, password } = req.body;
-  console.log(req.body);
-  const data = fs.readFileSync("./data/user.json", "utf-8");
-  const dataParsed = JSON.parse(data);
-  console.log(dataParsed.length);
-
-  if (dataParsed.length == 0) {
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    const newUser = {
-      id: uuid(),
-      nama,
-      email,
-      password: password,
-    };
-    dataParsed.push(newUser);
-    fs.writeFileSync("./data/user.json", JSON.stringify(dataParsed, null, 4));
-    res.redirect("/");
-  } else {
-    dataParsed.filter((item) => {
-      console.log("item", item.email);
-      if (item.email == email) {
-        res.send({ message: "email already exist" });
-      } else {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(password, salt);
-        const newUser = {
-          id: uuid(),
-          nama,
-          email,
-          password: password,
-        };
-        dataParsed.push(newUser);
-        fs.writeFileSync("./data/user.json", JSON.stringify(dataParsed, null, 4));
-        res.redirect("/");
-      }
-    });
+router.get("/", (req, res, next) => {
+  try {
+    const { status } = req.query;
+    res.render("main.ejs", { headTitle: "Home", status });
+  } catch (error) {
+    next(error);
   }
 });
 
-router.post("/login", (req, res) => {
+// router.get("/main", isLoggedIn, (req, res) => {
+//   res.render("main.ejs", { headTitle: "Home" });
+// });
+
+// router.get("/game", isLoggedIn, (req, res) => {
+//   res.render("game.ejs", { headTitle: "Game" });
+// });
+
+router.get("/login", (req, res, next) => {
+  try {
+    const { status } = req.query;
+    res.render("login.ejs", { headTitle: "Login", status });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   console.log(req.body);
-  const data = JSON.parse(fs.readFileSync("./data/user.json", "utf-8"));
-  const userMatch = data.find((item) => item.email == email);
+  const userAccount = await User_game.findAll();
+  const userMatch = userAccount.find((item) => item.email === email);
 
   if (!userMatch) {
     res.redirect("/login?status=emailnotfound");
@@ -100,10 +62,49 @@ router.post("/login", (req, res) => {
       //     console.log(decodedToken);
       //   });
 
-      res.redirect("/main");
+      res.redirect("/dashboard");
     } else {
       res.redirect("/login?status=wrongpassword");
     }
+  }
+});
+
+router.get("/register", (req, res, next) => {
+  try {
+    res.render("register.ejs", { headTitle: "Register" });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/register", async (req, res, next) => {
+  const { username, email, password, age, address, city, win, lose } = req.body;
+
+  try {
+    const newUser = await User_game.create({
+      username,
+      email,
+      password,
+    });
+
+    await User_game_biodata.create({
+      age,
+      address,
+      city,
+      user_uuid: newUser.uuid,
+    });
+
+    await User_game_history.create({
+      win,
+      lose,
+      user_uuid: newUser.uuid,
+    });
+
+    if (newUser) {
+      res.redirect(`/dashboard/${newUser.uuid}`);
+    }
+  } catch (error) {
+    next(error);
   }
 });
 

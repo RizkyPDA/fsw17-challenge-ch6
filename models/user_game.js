@@ -5,17 +5,12 @@ class User_game extends Model {}
 
 User_game.init(
   {
-    // Model attributes are defined here
-    // firstName: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // },
     uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -26,8 +21,10 @@ User_game.init(
       unique: {
         msg: "Email Sudah Digunakan",
       },
-      // tanpa pesan custom
-      // unique: true
+      password: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
     },
   },
   {
