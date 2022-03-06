@@ -98,6 +98,38 @@ const DeleteUserHistory = async (req, res) => {
   }
 };
 
+const editUser = async (req, res, next) => {
+  try {
+    const { name } = req.user;
+    console.log("reqbody", req.body);
+    const editUser = await Users.findOne({
+      where: {
+        uuid: req.params.id,
+      },
+    });
+
+    res.render("editUser.ejs", {
+      headTitle: "EDIT USER",
+      data: editUser,
+      name,
+    });
+  } catch (eror) {
+    next();
+  }
+};
+const editUserData = async (req, res, next) => {
+  try {
+    console.log("reqbody", req.body);
+    await Users.update(req.body, {
+      where: {
+        uuid: req.params.id,
+      },
+    });
+  } catch (eror) {
+    next();
+  }
+};
+
 module.exports = {
   Home,
   Login,
@@ -106,4 +138,6 @@ module.exports = {
   Dashboard,
   DashboardStatistic,
   DeleteUserHistory,
+  editUser,
+  editUserData,
 };

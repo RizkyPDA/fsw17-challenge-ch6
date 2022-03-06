@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partial/head') %>
+    <link rel="stylesheet" href="/dist/css/custom-style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info navbar-warning">
+      <div class="container">
+        <a class="navbar-brand col-2 nav-font-style" href="/dashboard">ADMIN PAGE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse col-auto navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 mb-0">
+            <!-- <li class="nav-item">
+              <a class="nav-link nav-link-style" aria-current="page" href="#main-bg">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="#">WORK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="#">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="#">ABOUT ME</a>
+            </li> -->
+          </ul>
+          <div class="navbar-nav d-flex mt-0">
+            <li class="nav-item dropdown nav-link-style">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= name %></a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="/">Landing Page</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container register-container">
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-6 col-lg-5">
+          <h1 class="mb-3">USER EDIT</h1>
+          <form action="/edit/<%= data.uuid %>" method="POST">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="fullname" name="fullname" value="<%= data.fullname %>" />
+              <label for="floatingInput">Fullname</label>
+            </div>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="username" name="username" value="<%= data.username %>" />
+              <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating my-4">
+              <input type="email" class="form-control" id="email" name="email" value="<%= data.email %> " />
+              <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="btn-group my-4 d-flex flex-column flex-md-row justify-content-md-center">
+              <button type="submit" class="btn-confirm my-2 me-md-4">Register</button>
+              <button type="submit" class="btn btn-success my-2 me-md-4">Edit</button>
+              <a href="/"><button type="button" class="btn-back my-2">Back</button></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partial/footer') %>
+  </body>
+</html>

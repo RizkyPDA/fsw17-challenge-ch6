@@ -25,7 +25,7 @@ const Register = async (req, res, next) => {
         fullname,
         username,
         email,
-        role_id,
+        role_id: 2,
         password: hashedPassword,
       });
 

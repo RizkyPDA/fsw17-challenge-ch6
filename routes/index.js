@@ -16,6 +16,8 @@ router.get("/game", isLoggedIn, controllerMVC.Game);
 router.get("/dashboard", isLoggedIn, controllerMVC.Dashboard);
 router.get("/dashboard/statistic/:id", isLoggedIn, controllerMVC.DashboardStatistic);
 router.get("/delete/:id", isLoggedIn, controllerMVC.DeleteUserHistory);
+router.get("/edit/:id", isLoggedIn, controllerMVC.editUser);
+router.post("/edit/:id", isLoggedIn, controllerMVC.editUserData);
 
 // MVC Routes
 router.post("/register", controllerMCR.Register);
