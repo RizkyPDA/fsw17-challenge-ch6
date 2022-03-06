@@ -1,31 +1,44 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 const sequelize = require("../utils/databaseConnection");
 
-class User_game_history extends Model {}
-
-User_game_history.init(
+class UserGameHistory extends Model {}
+UserGameHistory.init(
   {
     // Model attributes are defined here
     uuid: {
-      type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
-    lose: DataTypes.INTEGER(4),
-    win: DataTypes.INTEGER(4),
-    user_uuid: {
       type: DataTypes.UUID,
       allowNull: false,
+      primaryKey: true,
+    },
+    user_game_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+    win: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    lose: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    draw: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
   },
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: "user_game_history", // We need to choose the model name,
-    freezeTableName: true, // nama tabelnya tidak dirubah jadi bentuk jamak,
+    modelName: "user_game_history", // We need to choose the model name
+    freezeTableName: true,
     createdAt: true,
-    updatedAt: true,
+    updatedAt: false,
   }
 );
 
-module.exports = User_game_history;
+module.exports = UserGameHistory;

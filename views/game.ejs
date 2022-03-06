@@ -1,13 +1,12 @@
 <%- include('partial/head') %> 
-    <title>Rock, Paper, Scissors | Challenge Ch. 5 | Rizky</title>
-  </head>
+ 
   <body class="">
     
     <div class="container-fluid game-title">
       <div class="row">
         <div class="col-6 header">
           <div class="arrow">
-            <a href="/main">  
+            <a href="/">  
               <i class="fas fa-chevron-left"></i>
             </a>
           </div>
@@ -23,7 +22,7 @@
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-2 col-4 tokens">
-          <div class="player text-dark">PLAYER 1</div>
+          <div class="player text-dark"><%= name  %> </div>
           <button class="human token rock">
             <img src="/assets/batu.png" alt="" class="humans" />
           </button>

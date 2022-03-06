@@ -1,45 +1,49 @@
 const jwt = require("jsonwebtoken");
+
 const isLoggedIn = (req, res, next) => {
-  // const token = req.cookies.jwt;
-  // console.log("token", req.cookies);
-  // if (token) {
-  //   jwt.verify(token, "secret", (err, decodedToken) => {
-  //     if (err) {
-  //       res.locals.user = null;
-  //       res.redirect("../views/login.ejs");
-  //     } else {
-  //       res.locals.user = decodedToken.email;
-  //       console.log(decodedToken);
-  //       next();
-  //     }
-  //   });
-  // } else {
-  //   res.locals.user = null;
-  //   res.redirect("../views/login.ejs");
-  // }
-  const isCookies = req.cookies;
-  console.log("cookies", isCookies);
-  if (isCookies == undefined) {
-    res.locals.user = null;
-    res.redirect("/login");
+  const token = req.cookies.jwt;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+      if (err) {
+        // res.locals.id = null;
+        // res.locals.user = null;
+        // res.locals.role_id = null;
+        res.redirect("/login?status=tokenexpired");
+      } else {
+        //res.locals; buat variable jadi global
+        // res.locals.id = decodedToken.id;
+        // res.locals.user = decodedToken.username;
+        // res.locals.role_id = decodedToken.role_id;
+        req.user = decodedToken;
+        next();
+      }
+    });
   } else {
-    const token = req.cookies.jwt;
-    if (token) {
-      jwt.verify(token, "secret", (err, decoded) => {
-        if (err) {
-          console.log("err", err);
-          res.locals.user = null;
-          res.redirect("login");
-        } else {
-          res.locals.user = decoded.email;
-          console.log("user", res.locals.user);
-          //res.redirect("main");
-          next();
-        }
-      });
-    }
-    next();
+    res.locals.id = null;
+    res.locals.user = null;
+    res.locals.role_id = null;
+    res.redirect("/login?status=tokennotexist");
   }
 };
 
-module.exports = isLoggedIn;
+const isLoggedInAsAdmin = (req, res, next) => {
+  const token = req.cookies.jwt;
+  if (token) {
+    jwt.verify(token, "secret", (err, decodedToken) => {
+      if (err) {
+        res.redirect("/login?status=tokenexpied");
+      } else {
+        if (decodedToken.role_id != 1) {
+          res.redirect("/");
+        } else {
+          res.locals.user = decodedToken.username;
+          next();
+        }
+      }
+    });
+  } else {
+    res.redirect("/login?status=tokennotexist");
+  }
+};
+
+module.exports = { isLoggedIn, isLoggedInAsAdmin };

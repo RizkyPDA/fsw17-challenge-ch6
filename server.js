@@ -1,9 +1,14 @@
 require("dotenv").config();
 const express = require("express"); // Import modul Express.js
 const app = express();
+const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const sequelize = require("./utils/databaseConnection");
-const routes = require("./routes/router");
+const flash = require("connect-flash");
+
+const routes = require("./routes");
+
+app.use(flash());
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -11,7 +16,8 @@ app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser("secret"));
+app.use(session({ cookie: { maxAge: 60000 }, secret: "secretforsession", resave: true }));
 
 app.use(routes);
 
@@ -26,7 +32,9 @@ app.use((error, req, res, next) => {
 
 // connection
 sequelize
-  .sync()
+  .sync({
+    //force: true,
+  })
   .then(() => {
     const PORT = process.env.PORT;
     app.listen(PORT, () => {
