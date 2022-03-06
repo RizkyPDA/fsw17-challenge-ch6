@@ -13,19 +13,19 @@ const Register = async (req, res, next) => {
   try {
     const { fullname, username, email, role, password1, password2 } = req.body;
     // check apakah password dan confirm passwordnya sama
-    if (req.body.password1 !== req.body.password2) {
+    if (password1 !== password2) {
       //return errorHandler(400, "Password yang anda masukkan tidak cocok", res);
       res.redirect("/register");
     } else {
       // hash password user
-      const hashedPassword = await bcrypt.hash(req.body.password1, 10);
+      const hashedPassword = await bcrypt.hash(password1, 10);
 
       // create new user
       const newUser = await Users.create({
         fullname,
         username,
         email,
-        role,
+        role_id,
         password: hashedPassword,
       });
 
@@ -54,6 +54,45 @@ const Register = async (req, res, next) => {
   }
 };
 
+const API_Register = async (req, res, next) => {
+  try {
+    const { fullname, username, email, role_id, password } = req.body;
+    // hash password user
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // create new user
+    const newUser = await Users.create({
+      fullname,
+      username,
+      email,
+      role_id,
+      password: hashedPassword,
+    });
+
+    console.log("new user", newUser);
+
+    // create user bio after user created
+    await UserGameBiodata.create({
+      fullname,
+      user_game_id: newUser.uuid,
+    });
+
+    // create user history after user created
+    await UserGameHistory.create({
+      user_game_id: newUser.uuid,
+    });
+
+    res.json({
+      message: "User Created SuccessFully",
+    });
+  } catch (error) {
+    //return errorHandler(500, error.message, res);
+    console.log("catch register", error);
+    res.json({
+      message: "User Created Failed",
+    });
+  }
+};
 /**
  * Login User API
  */
@@ -86,7 +125,7 @@ const Login = async (req, res, next) => {
       let token = jwt.sign(
         {
           user_id: user.uuid,
-          role: user.role,
+          role: user.role_id,
           name: user.fullname,
         },
         process.env.JWT_SECRET,
@@ -95,7 +134,7 @@ const Login = async (req, res, next) => {
         }
       );
       res.cookie("jwt", token, { maxAge: 1000 * 60 * 60 * 24 });
-      res.redirect("/");
+      res.redirect("/dashboard");
     } else {
       // kalau user tidak ada dan password salah kasih error
       req.flash("error", "Email atau Password salah");
@@ -325,4 +364,5 @@ module.exports = {
   Login,
   CreateRoom,
   PlayGameRoom,
+  API_Register,
 };

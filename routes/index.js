@@ -1,27 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-const { isLoggedIn } = require("../Middleware/Authmiddleware");
-const { Users, User_game_history, User_game_biodata } = require("../models");
+const { isLoggedIn, isLoggedInAsAdmin } = require("../Middleware/Authmiddleware");
 const jwt = require("jsonwebtoken");
 
 const controllerMCR = require("../controllers/mcr");
 const controllerMVC = require("../controllers/mvc");
 
 // MVC Routes
-router.get("/", controllerMVC.Home);
+router.get("/", isLoggedIn, controllerMVC.Home);
 router.get("/login", controllerMVC.Login);
 router.get("/register", controllerMVC.Register);
 router.get("/game", isLoggedIn, controllerMVC.Game);
 
-// MCR Routes
-router.post("/api/register", controllerMCR.Register);
-router.post("/api/login", controllerMCR.Login);
-router.post("/api/room/add", controllerMCR.CreateRoom);
-router.post("/api/room/play", controllerMCR.PlayGameRoom);
+router.get("/dashboard", isLoggedIn, controllerMVC.Dashboard);
+router.get("/dashboard/statistic/:id", isLoggedIn, controllerMVC.DashboardStatistic);
+router.get("/delete/:id", isLoggedIn, controllerMVC.DeleteUserHistory);
+
+// MVC Routes
+router.post("/register", controllerMCR.Register);
+router.post("/login", controllerMCR.Login);
+router.post("/room/add", controllerMCR.CreateRoom);
+router.post("/room/play", controllerMCR.PlayGameRoom);
+
+// Backend
+router.post("/api/register", controllerMCR.API_Register);
 
 // router.get("/", isLoggedIn, controllerUser.getUsers);
-
 // router.get("/main", isLoggedIn, (req, res) => {
 //   res.render("main.ejs", { headTitle: "Home" });
 // });

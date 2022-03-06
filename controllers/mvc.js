@@ -1,5 +1,9 @@
+const { Users, UserGameHistory, UserGameBiodata } = require("../models/index");
+
 const Home = (req, res, next) => {
-  res.render("main.ejs", { headTitle: "Home" });
+  console.log("user", req.user);
+  const { name, user_id } = req.user;
+  res.render("main.ejs", { headTitle: "Home", name, user_id });
 };
 
 const Login = (req, res, next) => {
@@ -21,8 +25,77 @@ const Register = (req, res, next) => {
 
 const Game = (req, res) => {
   console.log("req", req.user);
+
   const { name, user_id } = req.user;
+
   res.render("game.ejs", { headTitle: "Game", name, user_id });
+};
+
+const Dashboard = async (req, res, next) => {
+  try {
+    const { name, user_id } = req.user;
+
+    const users = await Users.findAll({
+      include: ["user_game_history", "user_game_biodata"],
+    });
+    //console.log("users", users);
+    res.render("dashboard.ejs", {
+      headTitle: "Dashboard",
+      name,
+      user_id,
+      loginMessage: "Login Success",
+      data: users,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const DashboardStatistic = async (req, res, next) => {
+  try {
+    const { name, user_id } = req.user;
+    console.log("param", req.params.id);
+
+    const userHistory = await UserGameHistory.findOne({
+      include: ["user_game"],
+      where: { user_game_id: req.params.id },
+    });
+
+    console.log("userHistory", userHistory);
+
+    res.render("dashboard-statistic.ejs", {
+      headTitle: "Dashboard",
+      name,
+      user_id,
+      loginMessage: "Login Success",
+      data: userHistory,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const DeleteUserHistory = async (req, res) => {
+  try {
+    console.log("delete", req.params.id);
+
+    const UserToDelete = await Users.findOne({
+      where: {
+        uuid: req.params.id,
+      },
+    });
+
+    await UserToDelete.destroy();
+
+    if (UserToDelete) {
+      res.redirect("/dashboard/");
+    }
+  } catch (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+    res.redirect("/dashboard/");
+  }
 };
 
 module.exports = {
@@ -30,4 +103,7 @@ module.exports = {
   Login,
   Register,
   Game,
+  Dashboard,
+  DashboardStatistic,
+  DeleteUserHistory,
 };

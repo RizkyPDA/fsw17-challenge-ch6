@@ -10,6 +10,7 @@ const isLoggedIn = (req, res, next) => {
         // res.locals.role_id = null;
         res.redirect("/login?status=tokenexpired");
       } else {
+        console.log("decoded", decodedToken);
         //res.locals; buat variable jadi global
         // res.locals.id = decodedToken.id;
         // res.locals.user = decodedToken.username;
@@ -29,7 +30,7 @@ const isLoggedIn = (req, res, next) => {
 const isLoggedInAsAdmin = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
-    jwt.verify(token, "secret", (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
         res.redirect("/login?status=tokenexpied");
       } else {
