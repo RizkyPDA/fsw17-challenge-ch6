@@ -37,8 +37,8 @@ Users.init(
     },
 
     role_id: {
-      defaultValue: 2, //
-      type: DataTypes.INTEGER,
+      type: DataTypes.ENUM("SuperAdmin", "PlayerUser"),
+      allowNull: false,
     },
 
     is_active: {

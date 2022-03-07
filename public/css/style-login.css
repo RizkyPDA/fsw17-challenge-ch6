@@ -4,6 +4,7 @@
 body {
   background-color: #fff;
   font-family: "Karla", sans-serif;
+  margin-top: 100px;
 }
 
 h1 > a {

@@ -6,42 +6,21 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info navbar-warning">
-      <div class="container">
-        <a class="navbar-brand col-2 nav-font-style" href="/dashboard">ADMIN PAGE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse col-auto navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto my-2 my-lg-0 mb-0">
-            <!-- <li class="nav-item">
-              <a class="nav-link nav-link-style" aria-current="page" href="#main-bg">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-style" href="#">WORK</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-style" href="#">CONTACT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-style" href="#">ABOUT ME</a>
-            </li> -->
-          </ul>
-          <div class="navbar-nav d-flex mt-0">
-            <li class="nav-item dropdown nav-link-style">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= name %></a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="/">Landing Page</a></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-              </ul>
-            </li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand text-white logo" href="#page1">Welcome, <%= name %> </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"></button>
+          
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+              <li class="nav-item"><a class="nav-link menu-top-link" href="/profile"><%= name %></a> </li>
+              <li class="nav-item"><a class="nav-link menu-top-link btn-danger btn-lg"  href="/logout">Log out</a></li>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <div class="container">
-      <h1 class="text-center mt-5">Welcome to admin page</h1>
+    <div class="container mt-5">
+      <h1 class="text-center mt-5">ADMIN PAGE</h1>
       <% if(loginMessage){ %>
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong><%= loginMessage %></strong>
@@ -66,7 +45,7 @@
           <% var i=1 %> <% data.forEach(item => { %>
           <tr>
             <td class="text-center"><%= i %></td>
-            <td><% if(item.email) { %> <%= item.email %> <% } else { %><span class="badge bg-warning text-dark">not filled in by user</span><% } %></td>
+            <td><% if(item.username) { %> <%= item.username %> <% } else { %><span class="badge bg-warning text-dark">not filled in by user</span><% } %></td>
             <td><% if(item.fullname) { %> <%= item.fullname %> <% } else { %><span class="badge bg-warning text-dark">not filled in by user</span><% } %></td>
             <td><% if(item.email) { %> <%= item.email %> <% } else { %><span class="badge bg-warning text-dark">not filled in by user</span><% } %></td>
             <td><% if(item.nationality) { %> <%= item.nationality %> <% } else { %><span class="badge bg-warning text-dark">not filled in by user</span><% } %></td>

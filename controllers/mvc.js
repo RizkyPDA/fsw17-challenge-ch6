@@ -125,6 +125,7 @@ const editUserData = async (req, res, next) => {
         uuid: req.params.id,
       },
     });
+    res.redirect("/dashboard");
   } catch (eror) {
     next();
   }

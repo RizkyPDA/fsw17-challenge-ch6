@@ -1,6 +1,7 @@
 const Users = require("./user_game");
 const UserGameHistory = require("./user_game_history");
 const UserGameBiodata = require("./user_game_biodata");
+const Room = require("./room");
 
 Users.hasOne(UserGameBiodata, {
   foreignKey: "user_game_id",

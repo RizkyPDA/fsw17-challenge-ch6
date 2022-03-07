@@ -1,4 +1,4 @@
-const { Users, UserGameHistory, UserGameBiodata } = require("../models");
+const { Users, UserGameHistory, UserGameBiodata, Room } = require("../models");
 const { Op } = require("sequelize");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
@@ -154,16 +154,6 @@ const CreateRoom = async (req, res, next) => {
   try {
     const roomName = req.body.room_name;
     const user = req.user;
-    // hasil log user yang merupakan hasil buka kunci token yang dikirimkan oleh user
-    //====================================
-    //     {
-    //       user_id: '2cea4307-62e5-40de-b2b8-5c0ac1b454c8',
-    //       role: 'PLAYER',
-    //       name: 'Bayu',
-    //       iat: 1646404902,
-    //       exp: 1646491302
-    //     }
-    // ====================================
 
     if (!roomName) {
       return errorHandler(400, "Please Input Room Name", res);
