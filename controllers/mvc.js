@@ -1,4 +1,4 @@
-const { Users, UserGameHistory, UserGameBiodata } = require("../models/index");
+const { Users, UserGameHistory, UserGameBiodata, Room } = require("../models/index");
 
 const Home = (req, res, next) => {
   console.log("user", req.user);

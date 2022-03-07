@@ -8,6 +8,7 @@ const isLoggedIn = (req, res, next) => {
         // res.locals.id = null;
         // res.locals.user = null;
         // res.locals.role_id = null;
+        req.flash("error", "Token is Expired");
         res.redirect("/login?status=tokenexpired");
       } else {
         console.log("decoded", decodedToken);
@@ -22,8 +23,8 @@ const isLoggedIn = (req, res, next) => {
   } else {
     res.locals.id = null;
     res.locals.user = null;
-    res.locals.role_id = null;
-    res.redirect("/login?status=tokennotexist");
+    req.flash("error", "You're not Login, Please Login");
+    res.redirect("/login");
   }
 };
 
@@ -32,9 +33,11 @@ const isLoggedInAsAdmin = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
-        res.redirect("/login?status=tokenexpied");
+        req.flash("error", "Token is Expired");
+        res.redirect("/login");
       } else {
-        if (decodedToken.role_id != 1) {
+        if (decodedToken.role_id !== "SuperAdmin") {
+          req.flash("error", "You're Not Login As Admin");
           res.redirect("/");
         } else {
           res.locals.user = decodedToken.username;
@@ -43,7 +46,9 @@ const isLoggedInAsAdmin = (req, res, next) => {
       }
     });
   } else {
-    res.redirect("/login?status=tokennotexist");
+    res.locals.user = null;
+    req.flash("error", "You're not Login, Please Login");
+    res.redirect("/login");
   }
 };
 
